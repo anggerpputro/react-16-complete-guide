@@ -26,20 +26,3 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-.person-container {
-  width: 500px;
-  margin: 15px auto;
-  padding: 20px;
-  display: block;
-  border: 1px solid #eee;
-  box-shadow: 2px 3px 4px #ccc;
-}
-
-.person-container h1 {
-  font-size: 16px;
-}
-
-.person-container span {
-  font-size: 18px;
-}
