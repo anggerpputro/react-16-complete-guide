@@ -28,10 +28,14 @@
 }
 
 .person-container {
-  width: 50%;
+  width: 500px;
   margin: 15px auto;
-  padding: 10px;
+  padding: 20px;
   display: block;
   border: 1px solid #eee;
   box-shadow: 2px 3px 4px #ccc;
+}
+
+.person-container h1 {
+  font-size: 16px;
 }
