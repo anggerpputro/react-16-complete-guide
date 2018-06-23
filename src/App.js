@@ -8,9 +8,9 @@ class App extends Component {
 
   state = {
     persons: [
-      {name: 'Angger Priyardhan Putro', age: 24},
-      {name: 'Angie Priyardhan Prita Dewi', age: 19},
-      {name: 'Angelina Priyardhan Putri', age: 9},
+      {username: 'anggerpputro', name: 'Angger Priyardhan Putro', age: 24},
+      {username: 'angieprita', name: 'Angie Priyardhan Prita Dewi', age: 19},
+      {username: 'angelinapputri', name: 'Angelina Priyardhan Putri', age: 9},
     ],
     showPersons: false
   }
@@ -28,6 +28,25 @@ class App extends Component {
     this.setState({persons: persons});
   }
 
+  nameChangeHandler = (event, id) => {
+    // get component value yang diketikkan user
+    const newName = event.target.value;
+
+    // update data object person yang dimaksud
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.username === id;
+    });
+    const newPerson = {...this.state.persons[personIndex]};
+    newPerson.name = newName;
+
+    // masukkan object baru tadi ke dalam list persons
+    const newPersons = [...this.state.persons];
+    newPersons[personIndex] = newPerson;
+
+    // update state persons
+    this.setState({persons: newPersons});
+  }
+
   render() {
     const btnStyle = {
       padding: '8px',
@@ -43,10 +62,12 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return <Person 
-              key={index}
-              click={() => this.deletePersonHandler(index)}
+              key={person.username}
               name={person.name} 
-              age={person.age} />
+              age={person.age} 
+              clicked={() => this.deletePersonHandler(index)}
+              changed={(event) => this.nameChangeHandler(event, person.username)}
+              />
           })}
         </div>
       );
