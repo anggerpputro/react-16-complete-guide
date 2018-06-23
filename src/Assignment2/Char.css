@@ -1,0 +1,13 @@
+.char-container {
+	display: inline-block;
+	padding: 16px;
+	text-align: center;
+	margin: 16px;
+	border: 1px solid black;
+	min-width: 50px;
+	min-height: 50px;
+}
+
+.char-container h1 {
+	cursor: pointer;
+}
