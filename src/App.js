@@ -52,7 +52,8 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer',
       border: '1px solid blue',
-      background: 'white'
+      backgroundColor: 'green',
+      color: 'white'
     };
 
     let persons = null;
@@ -71,6 +72,9 @@ class App extends Component {
           })}
         </div>
       );
+
+      btnStyle.backgroundColor = 'red';
+      btnStyle.border = '1px solid yellow';
     }
 
     return (

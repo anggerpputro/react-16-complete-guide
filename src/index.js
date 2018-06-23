@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Assignment2 from './Assignment-2';
+// import Assignment2 from './Assignment-2';
 
-ReactDOM.render(<Assignment2 />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
