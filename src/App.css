@@ -39,3 +39,7 @@
 .person-container h1 {
   font-size: 16px;
 }
+
+.person-container span {
+  font-size: 18px;
+}
