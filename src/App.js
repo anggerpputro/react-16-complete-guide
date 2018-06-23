@@ -21,7 +21,9 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons.slice(); // slice dengan parameter kosong hanya untuk copy original data ke variable baru
+    const persons = [...this.state.persons]; // atau pakai ES6 syntax
+    // cara ini lebih direkomendasikan, jadi jangan langsung update original data tapi lebih baik copy dulu baru diupdate
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
   }
