@@ -1,10 +1,17 @@
 import React from 'react';
+import Radium from 'radium';
 
 import './Person.css';
 
 const Person = ( props ) => {
+	const style = {
+		'@media (max-width: 550px)': {
+			width: '90%'
+		}
+	};
+
 	return (
-		<div className="person-container">
+		<div className="Person" style={style}>
 			<h1 onClick={props.clicked}>
 				Hello, my name is: <span>{props.name}</span>
 			</h1>
@@ -14,4 +21,4 @@ const Person = ( props ) => {
 	);
 }
 
-export default Person;
+export default Radium(Person);

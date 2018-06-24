@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import logo from './logo.svg';
 import './App.css';
 
@@ -95,21 +95,23 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <StyleRoot>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to React</h1>
+          </header>
+          <p className="App-intro">
+            To get started, edit <code>src/App.js</code> and save to reload.
+          </p>
 
-        <main>
-          <p className={quoteClasses.join(' ')}>"Focus. Be Yourself. Be Positive. Smile. You Can Do It." :)</p>
-          <button style={btnStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
-          { persons }
-        </main>
-      </div>
+          <main>
+            <p className={quoteClasses.join(' ')}>"Focus. Be Yourself. Be Positive. Smile. You Can Do It." :)</p>
+            <button style={btnStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+            { persons }
+          </main>
+        </div>
+      </StyleRoot>
     );
   }
 }
