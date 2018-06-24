@@ -49,15 +49,8 @@ class App extends Component {
   }
 
   render() {
-    const btnStyle = {
-      padding: '8px',
-      cursor: 'pointer',
-      border: '1px solid blue',
-      backgroundColor: 'green',
-      color: 'white',
-    };
-
     let persons = null;
+    let btnClass = '';
 
     if ( this.state.showPersons ) {
       persons = (
@@ -73,9 +66,7 @@ class App extends Component {
           })}
         </div>
       );
-
-      btnStyle.backgroundColor = 'red';
-      btnStyle.border = '1px solid yellow';
+      btnClass = AppStyles.red;
     }
 
     const quoteClasses = [AppStyles['App-intro']];
@@ -98,7 +89,7 @@ class App extends Component {
 
           <main>
             <p className={quoteClasses.join(' ')}>"Focus. Be Yourself. Be Positive. Smile. You Can Do It." :)</p>
-            <button style={btnStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+            <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
             { persons }
           </main>
         </div>
