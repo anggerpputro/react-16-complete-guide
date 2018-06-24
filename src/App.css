@@ -48,13 +48,13 @@
   color: black;
 }
 
-.App button.red {
+.App button.Red {
   border: 1px solid yellow;
   background-color: red;
   color: white;
 }
 
-.App button.red:hover {
+.App button.Red:hover {
   background-color: salmon;
   color: black;
 }

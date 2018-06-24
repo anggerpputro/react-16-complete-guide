@@ -14,3 +14,9 @@
 .Person span {
 	font-size: 18px;
 }
+
+@media (max-width: 550px) {
+	.Person {
+		width: 90%;
+	}
+}

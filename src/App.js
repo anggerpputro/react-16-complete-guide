@@ -66,7 +66,7 @@ class App extends Component {
           })}
         </div>
       );
-      btnClass = AppStyles.red;
+      btnClass = AppStyles.Red;
     }
 
     const quoteClasses = [AppStyles['App-intro']];
