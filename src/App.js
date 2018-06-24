@@ -77,6 +77,14 @@ class App extends Component {
       btnStyle.border = '1px solid yellow';
     }
 
+    const quoteClasses = ['App-intro'];
+    if (this.state.persons.length <= 2) {
+      quoteClasses.push('red');
+      if (this.state.persons.length <= 1) {
+        quoteClasses.push('bold');
+      }
+    }
+
     return (
       <div className="App">
         <header className="App-header">
@@ -88,6 +96,7 @@ class App extends Component {
         </p>
 
         <main>
+          <p className={quoteClasses.join(' ')}>"Focus. Be Yourself. Be Positive. Smile. You Can Do It." :)</p>
           <button style={btnStyle} onClick={this.togglePersonsHandler}>Toggle Persons</button>
           { persons }
         </main>
