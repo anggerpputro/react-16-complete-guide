@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Radium, { StyleRoot } from 'radium';
 import logo from './logo.svg';
-import './App.css';
+import AppStyles from './App.css';
 
 import Person from './Person/Person';
 
@@ -55,10 +55,6 @@ class App extends Component {
       border: '1px solid blue',
       backgroundColor: 'green',
       color: 'white',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'blue'
-      }
     };
 
     let persons = null;
@@ -80,28 +76,23 @@ class App extends Component {
 
       btnStyle.backgroundColor = 'red';
       btnStyle.border = '1px solid yellow';
-      btnStyle[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'yellow'
-      };
     }
 
-    const quoteClasses = ['App-intro'];
+    const quoteClasses = [AppStyles['App-intro']];
     if (this.state.persons.length <= 2) {
-      quoteClasses.push('red');
+      quoteClasses.push(AppStyles.red);
       if (this.state.persons.length <= 1) {
-        quoteClasses.push('bold');
+        quoteClasses.push(AppStyles.bold);
       }
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
+        <div className={AppStyles.App}>
+          <header className={AppStyles['App-header']}>
+            <img src={logo} className={AppStyles['App-logo']} alt="logo" />
+            <h1 className={AppStyles['App-title']}>Welcome to React</h1>
           </header>
-          <p className="App-intro">
+          <p className={AppStyles['App-intro']}>
             To get started, edit <code>src/App.js</code> and save to reload.
           </p>
 
@@ -111,9 +102,8 @@ class App extends Component {
             { persons }
           </main>
         </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
