@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import AppStyles from './App.css';
 
-import Person from '../Persons/Person/Person';
+import Cockpit from '../components/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons';
 
 class App extends Component {
 
@@ -49,31 +50,12 @@ class App extends Component {
 
   render() {
     let persons = null;
-    let btnClass = '';
-
     if ( this.state.showPersons ) {
-      persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return <Person 
-              key={person.username}
-              name={person.name} 
-              age={person.age} 
-              clicked={() => this.deletePersonHandler(index)}
-              changed={(event) => this.nameChangeHandler(event, person.username)}
-              />
-          })}
-        </div>
-      );
-      btnClass = AppStyles.Red;
-    }
-
-    const quoteClasses = [AppStyles['App-intro']];
-    if (this.state.persons.length <= 2) {
-      quoteClasses.push(AppStyles.red);
-      if (this.state.persons.length <= 1) {
-        quoteClasses.push(AppStyles.bold);
-      }
+      persons = <Persons 
+        persons={this.state.persons}
+        clicked={this.deletePersonHandler}
+        changed={this.nameChangeHandler}
+        />;
     }
 
     return (
@@ -87,8 +69,10 @@ class App extends Component {
           </p>
 
           <main>
-            <p className={quoteClasses.join(' ')}>"Focus. Be Yourself. Be Positive. Smile. You Can Do It." :)</p>
-            <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+            <Cockpit 
+              showPersons={this.state.showPersons} 
+              persons={this.state.persons} 
+              btnClicked={this.togglePersonsHandler} />
             { persons }
           </main>
         </div>
