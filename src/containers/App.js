@@ -7,18 +7,31 @@ import Persons from '../components/Persons/Persons';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside constructor', props);
+  }
+
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount()');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount()');
+  }
+
   state = {
     persons: [
-      {username: 'anggerpputro', name: 'Angger Priyardhan Putro', age: 24},
-      {username: 'angieprita', name: 'Angie Priyardhan Prita Dewi', age: 19},
-      {username: 'angelinapputri', name: 'Angelina Priyardhan Putri', age: 9},
+      { username: 'anggerpputro', name: 'Angger Priyardhan Putro', age: 24 },
+      { username: 'angieprita', name: 'Angie Priyardhan Prita Dewi', age: 19 },
+      { username: 'angelinapputri', name: 'Angelina Priyardhan Putri', age: 9 },
     ],
     showPersons: false
   }
 
   togglePersonsHandler = () => {
     const showed = this.state.showPersons;
-    this.setState({showPersons: !showed});
+    this.setState({ showPersons: !showed });
   }
 
   deletePersonHandler = (personIndex) => {
@@ -26,7 +39,7 @@ class App extends Component {
     const persons = [...this.state.persons]; // atau pakai ES6 syntax
     // cara ini lebih direkomendasikan, jadi jangan langsung update original data tapi lebih baik copy dulu baru diupdate
     persons.splice(personIndex, 1);
-    this.setState({persons: persons});
+    this.setState({ persons: persons });
   }
 
   nameChangeHandler = (event, id) => {
@@ -37,7 +50,7 @@ class App extends Component {
     const personIndex = this.state.persons.findIndex(p => {
       return p.username === id;
     });
-    const newPerson = {...this.state.persons[personIndex]};
+    const newPerson = { ...this.state.persons[personIndex] };
     newPerson.name = newName;
 
     // masukkan object baru tadi ke dalam list persons
@@ -45,37 +58,39 @@ class App extends Component {
     newPersons[personIndex] = newPerson;
 
     // update state persons
-    this.setState({persons: newPersons});
+    this.setState({ persons: newPersons });
   }
 
   render() {
+    console.log('[App.js] Inside render()');
+
     let persons = null;
-    if ( this.state.showPersons ) {
-      persons = <Persons 
+    if (this.state.showPersons) {
+      persons = <Persons
         persons={this.state.persons}
         clicked={this.deletePersonHandler}
         changed={this.nameChangeHandler}
-        />;
+      />;
     }
 
     return (
-        <div className={AppStyles.App}>
-          <header className={AppStyles['App-header']}>
-            <img src={logo} className={AppStyles['App-logo']} alt="logo" />
-            <h1 className={AppStyles['App-title']}>Welcome to React</h1>
-          </header>
-          <p className={AppStyles['App-intro']}>
-            To get started, edit <code>src/App.js</code> and save to reload.
+      <div className={AppStyles.App}>
+        <header className={AppStyles['App-header']}>
+          <img src={logo} className={AppStyles['App-logo']} alt="logo" />
+          <h1 className={AppStyles['App-title']}>Welcome to React</h1>
+        </header>
+        <p className={AppStyles['App-intro']}>
+          To get started, edit <code>src/App.js</code> and save to reload.
           </p>
 
-          <main>
-            <Cockpit 
-              showPersons={this.state.showPersons} 
-              persons={this.state.persons} 
-              btnClicked={this.togglePersonsHandler} />
-            { persons }
-          </main>
-        </div>
+        <main>
+          <Cockpit
+            showPersons={this.state.showPersons}
+            persons={this.state.persons}
+            btnClicked={this.togglePersonsHandler} />
+          {persons}
+        </main>
+      </div>
     );
   }
 }
